@@ -5,7 +5,7 @@ Automating code updates using AI with GPT-4 and OpenAI's Assistant API. This sys
 ## Key Steps
 
 ### 1. Install and Configure Code Server
-- [ ] 1.1. Choose a suitable server for installation.
+- [x] 1.1. Choose a suitable server for installation.
 - [ ] 1.2. Install code-server following the official documentation.
 - [ ] 1.3. Configure access and security settings.
 - [ ] 1.4. Set up a domain or subdomain for code-server access.
