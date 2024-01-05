@@ -6,13 +6,13 @@ Automating code updates using AI with GPT-4 and OpenAI's Assistant API. This sys
 
 ### 1. Install and Configure Code Server
 - [x] 1.1. Choose a suitable server for installation.
-- [ ] 1.2. Install code-server following the official documentation.
-- [ ] 1.3. Configure access and security settings.
-- [ ] 1.4. Set up a domain or subdomain for code-server access.
-- [ ] 1.5. Test the code-server setup.
+- [x] 1.2. Install code-server following the official documentation.
+- [x] 1.3. Configure access and security settings.
+- [x] 1.4. Set up a domain or subdomain for code-server access.
+- [x] 1.5. Test the code-server setup.
 
 ### 2. Develop Chrome Extension Basic Structure
-- [ ] 2.1. Set up a new Chrome extension project.
+- [-] 2.1. Set up a new Chrome extension project.
 - [ ] 2.2. Create a manifest file with necessary permissions.
 - [ ] 2.3. Design a basic popup UI for the extension.
 - [ ] 2.4. Implement background scripts for core functionalities.
