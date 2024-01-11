@@ -1,1 +1,16 @@
-.history
+__pycache__
+.history/
+.vscode/
+.git/
+
+notes/*
+!notes/example.json
+
+tasks/*
+!tasks/example.json
+
+prompts/*
+!prompts/example.json
+
+logs/
+__pycache__/
