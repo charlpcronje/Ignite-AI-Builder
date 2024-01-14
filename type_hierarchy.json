@@ -1,0 +1,31 @@
+{
+  "types": {
+    "PROJECT": {
+      "children": ["FILE"]
+    },
+    "FILE": {
+      "children": ["CLASS", "TYPE", "BLOCK", "STYLE", "OBJECT", "CLOSURE"]
+    },
+    "CLASS": {
+      "children": ["METHOD", "OBJECT", "CLOSURE"]
+    },
+    "METHOD": {
+      "children": ["CLOSURE"]
+    },
+    "CLOSURE": {
+      "children": ["CLOSURE", "OBJECT"]
+    },
+    "OBJECT": {
+      "children": []
+    },
+    "TYPE": {
+      "children": []
+    },
+    "BLOCK": {
+      "children": ["STYLE", "OBJECT", "CLOSURE"]
+    },
+    "STYLE": {
+      "children": []
+    }
+  }
+}
