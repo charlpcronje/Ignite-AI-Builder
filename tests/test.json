@@ -1,0 +1,226 @@
+{
+    "tests": [{
+        "name": "Add Project Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/project/add",
+        "method": "POST",
+        "data": {
+            "content": "New project note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Project note added successfully"
+        }
+    },
+    {
+        "name": "Update Project Note",
+        "endpoint":"https://api.ignite.webally.co.za/notes/ignite/project/update",
+        "method": "PUT",
+        "data": {
+            "note_id": "1",
+            "content": "Updated project note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Project note added successfully"
+        }
+    },
+    {
+        "name": "Add File Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/file/add",
+        "method": "POST",
+        "data": {
+            "file_name": "src/main.py",
+            "content": "New file note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "File note added successfully"
+        }
+    },
+    {
+        "name": "Add Class Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/class/add",
+        "method": "POST",
+        "data": {
+            "file_name": "src/main.py",
+            "class_name": "MyClass",
+            "content": "New class note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Class note added successfully"
+        }
+    },
+    {
+        "name": "Add Method Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/method/add",
+        "method": "POST",
+        "data": {
+            "file_name": "src/main.py",
+            "class_name": "MyClass",
+            "method_name": "my_method",
+            "content": "New method note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Method note added successfully"
+        }
+    },
+    {
+        "name": "Add Function Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/function/add",
+        "method": "POST",
+        "data": {
+            "file_name": "src/main.py",
+            "function_name": "my_function",
+            "content": "New function note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Function note added successfully"
+        }
+    },
+    {
+        "name": "Update File Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/file/update",
+        "method": "PUT",
+        "data": {
+            "file_name": "src/main.py",
+            "note_id": "1",
+            "content": "Updated file note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "File note updated successfully"
+        }
+    },
+    {
+        "name": "Update Class Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/class/update",
+        "method": "PUT",
+        "data": {
+            "file_name": "src/main.py",
+            "class_name": "MyClass",
+            "note_id": "1",
+            "content": "Updated class note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Class note updated successfully"
+        }
+    },
+    {
+        "name": "Update Method Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/method/update",
+        "method": "PUT",
+        "data": {
+            "file_name": "src/main.py",
+            "class_name": "MyClass",
+            "method_name": "my_method",
+            "note_id": "1",
+            "content": "Updated method note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Method note updated successfully"
+        }
+    },
+    {
+        "name": "Update Function Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/function/update",
+        "method": "PUT",
+        "data": {
+            "file_name": "src/main.py",
+            "function_name": "my_function",
+            "note_id": "1",
+            "content": "Updated function note",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Function note updated successfully"
+        }
+    },
+    {
+        "name": "Delete Project Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/project/delete",
+        "method": "DELETE",
+        "data": {
+            "note_id": "1",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Project note deleted successfully"
+        }
+    },
+    {
+        "name": "Delete File Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/file/delete",
+        "method": "DELETE",
+        "data": {
+            "file_name": "src/main.py",
+            "note_id": "1",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "File note deleted successfully"
+        }
+    },
+    {
+        "name": "Delete Class Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/class/delete",
+        "method": "DELETE",
+        "data": {
+            "file_name": "src/main.py",
+            "class_name": "MyClass",
+            "note_id": "1",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Class note deleted successfully"
+        }
+    },
+    {
+        "name": "Delete Method Note",
+        "endpoint": "https://api.ignite.webally.co.za/notes/ignite/method/delete",
+        "method": "DELETE",
+        "data": {
+            "file_name": "src/main.py",
+            "class_name": "MyClass",
+            "method_name": "my_method",
+            "note_id": "1",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Method note deleted successfully"
+        }
+    },
+    {
+        "name": "Delete Function Note",
+        "endpoint": "{base_url}/notes/ignite/function/delete",
+        "method": "DELETE",
+        "data": {
+            "file_name": "src/main.py",
+            "function_name": "my_function",
+            "note_id": "1",
+            "api_key": "api_key_1"
+        },
+        "expected_status": 200,
+        "expected_response": {
+            "message": "Function note deleted successfully"
+        }
+    }
+]}
