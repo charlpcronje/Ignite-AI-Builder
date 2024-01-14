@@ -2,6 +2,8 @@ __pycache__
 .history/
 .vscode/
 .git/
+logs/*
+tests/__pycache__
 
 notes/*
 !notes/example.json
@@ -10,7 +12,9 @@ tasks/*
 !tasks/example.json
 
 prompts/*
-!prompts/example.json
+!prompts/example.md
 
 logs/
 __pycache__/
+
+tests/api_test_log.md
