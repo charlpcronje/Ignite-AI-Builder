@@ -1,9 +1,9 @@
-# ./task_routes.py
+# task_routes.py
 """
 Task Routes Module
 ------------------
 Defines the Flask routes for task-related operations. This module interfaces with the FileHandler, 
-TaskExtractor, and MarkdownConverter classes to manage tasks. It includes functionality for 
+TaskManager, and MarkdownConverter classes to manage tasks. It includes functionality for 
 retrieving, updating, and 'deleting' tasks, with each operation secured through API key authentication 
 and detailed logging for monitoring and debugging.
 
@@ -14,14 +14,14 @@ Functions:
 
 Dependencies:
 - FileHandler: Module for handling file operations.
-- TaskExtractor: Module for extracting specific tasks or subtasks.
+- TaskManager: Module for extracting specific tasks or subtasks.
 - MarkdownConverter: Module for converting tasks to Markdown format.
 - require_api_key: Decorator from api_authenticator for API key validation.
 """
 
 from flask import Blueprint, request, jsonify
 from file_handler import FileHandler
-from task_extractor import TaskExtractor
+from task_manager import TaskManager
 from markdown_converter import MarkdownConverter
 from api_authenticator import api_auth_instance
 import logging
@@ -32,7 +32,7 @@ import os
 # Initialize Blueprint for task routes
 task_blueprint = Blueprint('task_routes', __name__)
 file_handler = FileHandler()
-task_extractor = TaskExtractor()
+task_manager = TaskManager()
 markdown_converter = MarkdownConverter()
 
 @task_blueprint.route('/<project_name>', methods=['GET'])
@@ -60,7 +60,7 @@ def get_task(project_name, task_number=None):
         return jsonify({'error': 'File not found'}), 404
 
     if task_number:
-        tasks_data = task_extractor.extract_task_data(tasks_data, task_number)
+        tasks_data = task_manager.extract_task_data(tasks_data, task_number)
         if tasks_data is None:
             logging.error("Specific task or subtask not found")
             return jsonify({'error': 'Task or subtask not found'}), 404
