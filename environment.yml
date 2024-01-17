@@ -1,0 +1,7 @@
+# conda env create -f environment.yml
+name: ignite-api
+dependencies:
+  - python=3.11.5
+  - flask
+  - flask-cors
+  - python-dotenv
