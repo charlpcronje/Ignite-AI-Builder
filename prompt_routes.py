@@ -11,21 +11,21 @@ Functions:
 - get_prompt: Retrieves the content of a markdown file based on the project name.
 
 Dependencies:
-- prompt_retriever: Module for handling the retrieval of markdown files.
+- prompt_manager: Module for handling the retrieval of markdown files.
 - require_api_key: Decorator from api_authenticator for API key validation.
 """
 
 from flask import Blueprint, jsonify
-from prompt_retriever import PromptRetriever
+from prompt_manager import PromptManager
 from api_authenticator import api_auth_instance
 import logging
 
 # Initialize Blueprint for prompt routes
 prompt_blueprint = Blueprint('prompt_routes', __name__)
-prompt_retriever = PromptRetriever("prompts")
+prompt_manager = PromptManager("prompts")
 
-@prompt_blueprint.route('/<project_name>', methods=['GET'])
-#@api_auth_instance.require_api_key
+@prompt_blueprint.route('/<project_name>/get', methods=['GET'])
+@api_auth_instance.require_api_key
 def get_prompt(project_name):
     """
     Retrieves and returns the content of a markdown prompt file based on the project name.
@@ -37,7 +37,7 @@ def get_prompt(project_name):
         The content of the markdown file or an error message.
     """
     filename = f"{project_name}.md"
-    content, error = prompt_retriever.get_prompt(filename)
+    content, error = prompt_manager.get_prompt(filename)
     if error:
         logging.error(f"Error retrieving prompt for {filename}: {error}")
         return jsonify({'error': error}), 404
