@@ -1,0 +1,459 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Tasks and Notes API for Custom GPT",
+        "description": "API for managing tasks and notes in the '{project}' project, including task updates and note management.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.ignite.webally.co.za"
+        }
+    ],
+    "paths": {
+        "/tasks/{project}": {
+            "get": {
+                "operationId": "getTasksByProject",
+                "summary": "Get All Tasks in '{project}'",
+                "description": "Retrieves all tasks in '{project}' project in JSON or Markdown format.",
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "Format of the tasks (json/md)",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "json",
+                                "md"
+                            ]
+                        },
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list of tasks",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetTasksResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/{project}/{taskId}": {
+            "get": {
+                "operationId": "getTasksByProjectAndTaskId",
+                "summary": "Get Specific Task in '{project}'",
+                "description": "Retrieves a specific task or subtask in '{project}' project in JSON or Markdown format.",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "Format of the tasks (json/md)",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "json",
+                                "md"
+                            ]
+                        },
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Details of the specified task",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TaskDetails"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "operationId": "updateTaskByProjectAndTaskId",
+                "summary": "Update Task or Subtask in '{project}'",
+                "description": "Updates the status and/or description of a task or subtask in '{project}' project.",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateTaskRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Task updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SimpleMessageResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/notes/{project}/add": {
+            "post": {
+                "operationId": "updateTaskToProject",
+                "summary": "Add a Note in '{project}'",
+                "description": "Adds a new note in '{project}' project.",
+                "parameters": [
+                    {
+                        "name": "action",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "add",
+                                "update/{noteId}"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "identifier",
+                        "in": "query",
+                        "description": "Unique identifier for the note location",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": false
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NoteRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Note added or updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NoteResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/notes/{project}/update/{noteId}": {
+            "post": {
+                "operationId": "updateProjectNoteByNoteId",
+                "summary": "Update Note in '{project}'",
+                "description": "Updates a existing by in '{project}'",
+                "parameters": [
+                    {
+                        "name": "project",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "noteId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "identifier",
+                        "in": "query",
+                        "description": "Unique identifier for the note location",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NoteRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Note added or updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NoteResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/notes/{project}/delete/{noteId}": {
+            "summary": "Delete a Note in '{project}'",
+            "description": "Deletes a note from the '{project}' project.",
+            "parameters": [
+                {
+                    "name": "noteId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "identifier",
+                    "in": "query",
+                    "description": "Unique identifier for the note location",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Note deleted successfully",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SimpleMessageResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/notes/{project}/get": {
+        "get": {
+            "operationId": "getNotesByIdentifier",
+            "summary": "Get Notes by Identifier",
+            "description": "Retrieves notes by a specific identifier in the '{project}' project.",
+            "parameters": [
+                {
+                    "name": "identifier",
+                    "in": "query",
+                    "description": "Unique identifier for the note location",
+                    "schema": {
+                        "type": "string"
+                    },
+                    "required": true
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "List of notes for the given identifier",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NotesByIdentifierResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/prompts/{project}/get": {
+        "get": {
+            "operationId": "getPromptByProject",
+            "summary": "Retrieve a Markdown Prompt",
+            "description": "Testing retrieval of a markdown prompt.",
+            "responses": {
+                "200": {
+                    "description": "Markdown prompt retrieved successfully",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MarkdownPromptResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/disk/{project}/schema/api": {
+        "get": {
+            "operationId": "getSchemaByProject",
+            "summary": "Get OpenAPI Schema",
+            "description": "Retrieves the OpenAPI schema for the Tasks and Notes API.",
+            "parameters": [
+                {
+                    "name": "format",
+                    "in": "query",
+                    "description": "Format of the schema (json/md/yml)",
+                    "schema": {
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "md",
+                            "yml"
+                        ]
+                    },
+                    "required": true
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "The OpenAPI schema for the API",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "additionalProperties": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetTasksResponse": {
+                "type": "object",
+                "properties": {
+                    "overview": {
+                        "type": "string"
+                    },
+                    "tasks": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/TaskDetails"
+                        }
+                    }
+                }
+            },
+            "TaskDetails": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "task": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UpdateTaskRequest": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "description": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                }
+            },
+            "SimpleMessageResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "NoteRequest": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "content"
+                ]
+            },
+            "NoteResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "note_id": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                }
+            },
+            "NotesByIdentifierResponse": {
+                "type": "object",
+                "properties": {
+                    "notes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/NoteDetails"
+                        }
+                    }
+                }
+            },
+            "NoteDetails": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": "string"
+                    }
+                }
+            },
+            "MarkdownPromptResponse": {
+                "type": "object",
+                "properties": {
+                    "prompt": {
+                        "type": "string",
+                        "format": "markdown"
+                    }
+                }
+            }
+        }
+    }
+}
