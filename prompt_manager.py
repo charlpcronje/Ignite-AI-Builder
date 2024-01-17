@@ -1,18 +1,18 @@
-# ./prompt_retriever.py
+# prompt_manager.py
 """
-PromptRetriever Module
+PromptManager Module
 ----------------------
 This module provides functionality to retrieve and serve markdown files from the
 'prompts' directory. It is designed to handle requests for specific prompt documents.
 
 Classes:
-- PromptRetriever: Handles the retrieval of markdown prompt files.
+- PromptManager: Handles the retrieval of markdown prompt files.
 """
 
 import logging
 import os
 
-class PromptRetriever:
+class PromptManager:
     def __init__(self, prompts_dir):
         self.prompts_dir = prompts_dir
         logging.basicConfig(level=logging.INFO)

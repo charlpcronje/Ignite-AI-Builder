@@ -1,9 +1,9 @@
-# ./task_extractor.py
+# task_manager.py
 # This module is responsible for extracting specific tasks or subtasks from JSON data.
 
 import logging
 
-class TaskExtractor:
+class TaskManager:
     def __init__(self):
         logging.basicConfig(level=logging.INFO)
 
