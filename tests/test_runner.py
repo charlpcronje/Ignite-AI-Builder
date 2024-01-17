@@ -13,11 +13,11 @@ def test_endpoint(name, url, method, data=None, params=None, overview="", expect
         if method == "GET":
             response = requests.get(url, headers=headers, params=params)
         elif method == "POST":
-            response = requests.post(url, json=data, headers=headers)
+            response = requests.post(url, json=data, headers=headers, params=params)
         elif method == "PUT":
-            response = requests.put(url, json=data, headers=headers)
+            response = requests.put(url, json=data, headers=headers, params=params)
         elif method == "DELETE":
-            response = requests.delete(url, json=data, headers=headers)
+            response = requests.delete(url, json=data, headers=headers, params=params)
 
         # Check if response is successful and as expected
         if response and response.status_code == expected_status:
