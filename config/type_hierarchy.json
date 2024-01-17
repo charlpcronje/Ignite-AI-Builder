@@ -1,0 +1,31 @@
+{
+  "types": {
+    "project": {
+      "children": ["file"]
+    },
+    "file": {
+      "children": ["file", "class", "sub-class", "type", "block", "style", "object", "closure", "function", "regex"]
+    },
+    "class": {
+      "children": ["sub-class", "method", "object", "regex"]
+    },
+    "method": {
+      "children": ["closure", "regex", "object"]
+    },
+    "closure": {
+      "children": ["object"]
+    },
+    "object": {
+      "children": ["object", "regex", "closure"]
+    },
+    "type": {
+      "children": []
+    },
+    "block": {
+      "children": ["style", "block"]
+    },
+    "style": {
+      "children": ["style"]
+    }
+  }
+}
