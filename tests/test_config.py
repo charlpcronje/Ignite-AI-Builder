@@ -5,7 +5,10 @@
 base_url = "https://api.ignite.webally.co.za"
 
 # API Key
-api_key = "_mu0WygMRETwooV39aj0PQ"  # Replace with your actual API key
+api_key = "_mu0WygMRETwooV39aj0PQ"
+
+# Project Name
+project_name = "ignite"
 
 # API Endpoints to test
 endpoints = {
@@ -16,5 +19,5 @@ endpoints = {
     "get_prompt": f"{base_url}/prompts/ignite?format=md",
     "get_tasks": f"{base_url}/tasks/ignite?format=md",
     "get_specific_task": f"{base_url}/tasks/ignite/1?format=md",
-    "get_specific_subtask": f"{base_url}/tasks/ignite/1/1?format=md"
+    "get_specific_subtask": f"{base_url}/tasks/ignite/11?format=md"
 }
