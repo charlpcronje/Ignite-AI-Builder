@@ -1,8 +1,8 @@
 {
     "openapi": "3.1.0",
     "info": {
-        "title": "Tasks and Notes API for Custom GPT",
-        "description": "API for managing tasks and notes in the '{project}' project, including task updates and note management.",
+        "title": "Tasks, Notes and Documents API for Custom GPT",
+        "description": "API for managing tasks, notes and documents in the '{project}' project, including task updates and note management and document retrieval.",
         "version": "1.0.0"
     },
     "servers": [
