@@ -1,11 +1,13 @@
 # Ignite AI Builder
 
-## Overview:
+## Overview
 This Flask-based web application is a multi-faceted system designed to handle tasks, notes, prompts, disk operations through a RESTful API. It employs various modules for handling different aspects like file operations, markdown conversion, API authentication, and more. Each module is tailored to a specific functionality, ensuring modularity and maintainability
 
 - [Ignite AI Builder](#ignite-ai-builder)
-  - [Overview:](#overview)
+  - [Overview](#overview)
   - [General Overview and Usage Instructions](#general-overview-and-usage-instructions)
+  - [Usage Instructions](#usage-instructions)
+  - [Roadmap](#roadmap)
   - [Detailed Documentation for File Handler](#detailed-documentation-for-file-handler)
     - [Module Overview: `file_handler.py`](#module-overview-file_handlerpy)
     - [Class: FileHandler](#class-filehandler)
@@ -192,6 +194,8 @@ This Flask-based web application is a multi-faceted system designed to handle ta
   - [OpenAI Schema](#openai-schema)
 
 
+
+
 ## General Overview and Usage Instructions
 
 1. **file_handler.py**: Manages file operations, specifically for JSON files. Includes methods for reading and writing JSON files with file locking mechanisms to handle concurrent access.
@@ -209,9 +213,48 @@ This Flask-based web application is a multi-faceted system designed to handle ta
 13. **disk_manager.py**: Provides functionality for managing disk operations such as reading and writing files.
 14. **conversion.py**: Contains functions for converting JSON data to different formats, such as Markdown.
 
-**Usage Instructions:**
+## Usage Instructions
 Each module is designed to be standalone yet integrable within the Flask application. To utilize these modules, import them into your Flask app or other Python scripts as needed. The `app.py` file is your entry point, tying all the modules together into a cohesive application.
 
+## Roadmap
+
+📖 To expand the capabilities of the AI agent for autonomous software creation, updating, and management, it's essential to consider additional functionalities that the API might need to support. Here are some key areas to explore:
+
+1. **Advanced Task Scheduling and Dependency Management**
+  - **Requirement**: Ability to schedule tasks for future dates and manage dependencies between tasks.
+  - **Reasoning**: The AI might need to plan tasks in a sequence, where the completion of one task triggers the start of another.
+
+2. **Integrated Version Control System (VCS) Support**
+  - **Requirement**: Direct interaction with VCS (like Git) for tracking changes, committing code, and managing branches.
+  - **Reasoning**: Automating version control processes is crucial for software development, allowing the AI to handle code updates and maintain historical records of changes.
+
+3. **Real-time Collaboration and Notification System**
+  - **Requirement**: Mechanisms for the AI to collaborate with human team members, including notification systems.
+  - **Reasoning**: The AI should be able to notify team members about updates, receive feedback, and possibly integrate inputs from different sources.
+
+4. **Automated Testing and Continuous Integration/Deployment (CI/CD)**
+  - **Requirement**: Ability to initiate and manage automated tests, and integrate with CI/CD pipelines.
+  - **Reasoning**: Continuous testing and deployment are vital for agile development, ensuring that changes made by the AI are viable and do not introduce bugs.
+
+5. **Dynamic Resource Allocation and Scaling**
+  - **Requirement**: Manage computational resources, scale services based on demand.
+  - **Reasoning**: Depending on the task's complexity and urgency, the AI might need to allocate more resources or scale down to optimize usage.
+
+6. **Enhanced Security Protocols**
+  - **Requirement**: Robust authentication and authorization mechanisms, especially if the AI handles sensitive data or critical operations.
+  - **Reasoning**: As the AI has a high level of access, security is paramount to protect the system from internal errors and external threats.
+
+7. **Data Analytics and Reporting**
+  - **Requirement**: Tools for analyzing performance metrics, generating reports, and extracting insights.
+  - **Reasoning**: To improve over time, the AI needs to understand its performance and the impact of its actions.
+
+8. **Customizable Workflow and Process Automation**
+  - **Requirement**: Ability to define and automate specific workflows or processes.
+  - **Reasoning**: Different projects might require unique workflows, and the AI should adapt its operations accordingly.
+
+9. **Feedback and Learning Loop Integration**
+  - **Requirement**: Mechanisms to receive feedback, learn from it, and adapt strategies.
+  - **Reasoning**: For continuous improvement, the AI should evolve its approach based on success rates and feedback.
 
 ## Detailed Documentation for File Handler
 
